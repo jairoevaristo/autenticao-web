@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Autenticação - Web</title>
+        
+      </head>
+    
+    <body>
+        <header class="w-full bg-slate-700 h-16 flex items-center jusitify-between px-8 mb-12">
+            <div class="w-12">
+            <a href="/produto" class="text-2xl font-bold text-slate-100">
+                Inicio
+            </a>
+            </div>
+            
+        </header>
+        <div class="m-auto max-w-7xl flex jusitify-center flex-col">
+            <div id="campos-produto" class="flex jusitify-center flex-col"></div>
+            <div>
+            </div>
+                <span class="font-bold text-slate-700 text-2xl mb-4">
+            </span>
+            <table class="hover:border-collapse table-auto border-collapse border border-slate-100 border-collapse mt-7" border="">
+                <thead>
+                <tr>
+                <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">ID</th>
+                <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">Nome</th>
+                <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">Descrição</th>
+                <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">Categoria</th>
+                <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">Preço</th>
+                <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">Autor</th>
+                </tr>
+            </thead>
+                <tbody class="text-center w-5">
+                    <% produtos?.forEach(element => { %> 
+                        <tr>
+                            <td class="font-normal text-lg py-3 px-3">
+                                <%= element.id.substring(0, 6) %> 
+                            </td>
+                            <td class="font-normal text-lg">
+                                <%= element.nome %> 
+                            </td>
+                            <td class="font-normal text-lg">
+                                <%= element.descricao %> 
+                            </td>
+                            <td class="font-normal text-lg">
+                                <%= element.categoria %> 
+                            </td>
+                            <td class="font-normal text-lg">
+                                R$ <%= element.preco %> 
+                            </td>
+                            <td> 
+                                <button onclick="meusProdutos('<%= element.autor.name%>')">
+                                    <%= element.autor.name %> 
+                                </button>
+                            </td>
+                            </td>
+                        </tr>
+                        <% }) %>
+                
+                </tbody>
+            </table>
+            <div class="flex items-center justify-center mt-8">
+                <button id="cadastro-produto"  class="p-2 bg-slate-700 rounded text-slate-200 text-center">
+                    <a href="/produto/produto-novo">Cadastrar produto</a>
+                </button>
+            </div>
+        </div>
+        <script>
+            function meusProdutos(name) {
+                window.location.href = `produto/meus-produtos/${name}`
+            }
+        </script>
+    </body>
+</html>

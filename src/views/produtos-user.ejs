@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Autenticação - Web</title>
+      </head>
+<body>
+    <header class="w-full bg-slate-700 h-16 flex items-center jusitify-between px-8 mb-12">
+        <div class="w-12">
+          <a href="/produto" class="text-2xl font-bold text-slate-100">
+            Inicio
+          </a>
+         
+        </div>
+        <div class="flex items-center justify-end w-full">
+            
+          <a href="/produto/meus-produtos">
+            <div class="mr-6 flex items-center ">
+              <div class="w-7 h-7 rounded-full bg-slate-900">
+                <img src=<%= user.avatar%>  class="overflow-hidden rounded-full" />
+              </div>
+              <span class="text-slate-200 ml-1"><%= user.name%></span>
+            </div>
+        </a>
+        <button class="text-slate-200 text-md" id="logout">
+            logout
+        </button>
+        </div>
+        
+      </header>
+   <div class="m-auto max-w-7xl flex jusitify-center flex-col">
+       <div id="campos-produto" class="flex jusitify-center flex-col"></div>
+    <div>
+    </div>
+          <span class="font-bold text-slate-700 text-2xl mb-4">
+       </span>
+    <table class="hover:border-collapse table-auto border-collapse border border-slate-100 border-collapse mt-7" border="">
+        <thead>
+        <tr>
+          <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">ID</th>
+          <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">Nome</th>
+          <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">Descrição</th>
+          <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">Categoria</th>
+          <th class="py-2 px-8 bg-gray-200 text-zinc-600 font-normal">Preço</th>
+        </tr>
+    </thead>
+    <tbody class="text-center w-5">
+        <% produtos?.forEach(element => { %> 
+            <tr>
+                <td class="font-normal text-lg py-3 px-3">
+                    <%= element.id.substring(0, 6) %> 
+                </td>
+                <td class="font-normal text-lg">
+                    <%= element.nome %> 
+                </td>
+                <td class="font-normal text-lg">
+                    <%= element.descricao %> 
+                </td>
+                <td class="font-normal text-lg">
+                    <%= element.categoria %> 
+                </td>
+                <td class="font-normal text-lg">
+                    R$ <%= element.preco %> 
+                </td>
+                
+            </tr>
+            <% }) %>
+    
+    </tbody>
+    </table>
+    <button class="mt-6 ml-3">
+        <a style="text-decoration: none;" class="p-2 bg-slate-700 rounded text-slate-200" href="/produto/produto-novo">
+            Cadastrar produto
+        </a>
+    </button>
+    <script>
+        const logout = document.querySelector('#logout');
+
+        logout.addEventListener('click', () => {
+            let cookies = document.cookie.split(";");
+
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i];
+                let eqPos = cookie.indexOf("=");
+                let name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+
+            window.location.href = '/produto/'
+        })
+    </script>
+</div>
+</body>
+</html>
