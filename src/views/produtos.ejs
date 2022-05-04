@@ -54,9 +54,7 @@
                                 R$ <%= element.preco %> 
                             </td>
                             <td> 
-                                <button onclick="meusProdutos('<%= element.autor.name%>')">
-                                    <%= element.autor.name %> 
-                                </button>
+                                <%= element.autor.name %> 
                             </td>
                             </td>
                         </tr>
@@ -71,9 +69,7 @@
             </div>
         </div>
         <script>
-            function meusProdutos(name) {
-                window.location.href = `produto/meus-produtos/${name}`
-            }
+            
         </script>
     </body>
 </html>
