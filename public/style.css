@@ -1,0 +1,38 @@
+body {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.flex-colum {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: cadetblue;
+  display: flex;
+  padding: 10px;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+form {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mt {
+  margin-bottom: 20px;
+}
+
+.m-r {
+  margin-right: -20px;
+}

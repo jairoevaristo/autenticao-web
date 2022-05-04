@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="/style.css">
         <title>Autenticação - Web</title>
       </head>
-<body>
-    <header class="w-full bg-slate-700 h-16 flex items-center jusitify-between px-8 mb-12">
+    <body>
+    <header class="w-full header bg-slate-700 h-16 flex items-center jusitify-between px-8 mb-12">
         <div class="w-12">
           <a href="/produto" class="text-2xl font-bold text-slate-100">
             Inicio
@@ -17,12 +17,12 @@
         </div>
         <div class="flex items-center justify-end w-full">
             
-          <a href="/produto/meus-produtos">
-            <div class="mr-6 flex items-center ">
-              <div class="w-7 h-7 rounded-full bg-slate-900">
-                <img src=<%= user.avatar%>  class="overflow-hidden rounded-full" />
-              </div>
-              <span class="text-slate-200 ml-1"><%= user.name%></span>
+            <div class="flex-end m-r">
+                <a href="/produto/meus-produtos">
+                  <div class="mr-6 items-center">
+                    <span class="text-slate-200 ">usuario logado: </span>
+                    <span class="text-slate-200 ml-1"><%= user.name%></span>
+                  </div>
             </div>
         </a>
         
